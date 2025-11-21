@@ -49,7 +49,7 @@ st.markdown('<div class="sub-title">ML Model Powered — Clean • Fast • Accu
 
 # ---------------------- Load Model ------------------------
 with open("Pipeline.pkl", "rb") as f:
-    model = pickle.load(f)
+    Pipeline = pickle.load(f)
 
 # ---------------------- Input Box -------------------------
 st.markdown('<div class="box">', unsafe_allow_html=True)
@@ -71,7 +71,7 @@ if st.button("🔮 Predict Price", use_container_width=True):
             "bath": bath
         }])
 
-        pred = model.predict(df)[0]
+        pred =Pipeline.predict(df)[0]
         price_rupees=pred*1_00_000
         if pred>=100:
             crore=pred / 100
